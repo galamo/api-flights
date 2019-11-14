@@ -6,7 +6,10 @@ const flightsRouter = require("./routes/flights")
 const vacationsRouter = require("./routes/vacations")
 const validateSession = require("./routes/validateSession");
 const logger = require("./utils/logger");
+const cors = require("cors");
 const app = express()
+
+app.use(cors())
 app.use("/static", express.static("images"))
 app.use(bodyParser.json())
 
@@ -14,7 +17,7 @@ app.get("/hc", (req, res, next) => {
     res.send("ok")
 })
 
-app.use("/auth", authRouter) //2 entries loaded..
+app.use("/auth", authRouter) //2 entries loaded.. 
 app.use(validateSession)
 app.use("/flights", flightsRouter)
 app.use("/vacations", vacationsRouter)
