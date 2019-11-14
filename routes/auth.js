@@ -8,7 +8,9 @@ router.post("/login", (req, res, next) => {
 })
 
 router.post("/register", (req, res, next) => {
-    res.send("register success...")
+    console.log(req.originalUrl)
+    console.log(req.body)
+    res.json({ message: "registration completed", redirect: true })
 })
 
 
